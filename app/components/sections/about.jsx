@@ -26,9 +26,11 @@ function AboutSection() {
                 width={640}
                 height={640}
                 alt="Portrait of Andrew Luswata"
-                className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="w-full h-auto"
                 priority={false}
               />
+              {/* the monochrome portrait takes the accent hue on hover */}
+              <div className="absolute inset-0 bg-accent mix-blend-color opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
             </div>
             <p className="absolute -bottom-8 left-0 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
               Fig. 01 — {personalData.name.toLowerCase()}
