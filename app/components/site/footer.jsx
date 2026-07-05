@@ -35,6 +35,12 @@ function Footer() {
           </div>
 
           <div className="flex items-center gap-6 font-mono text-xs uppercase tracking-[0.18em]">
+            <Link
+              href="/playground"
+              className="link-lined text-accent/90 hover:text-accent transition-colors"
+            >
+              ✦ Playground
+            </Link>
             {socials.map((s) => (
               <a
                 key={s.label}

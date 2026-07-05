@@ -11,7 +11,8 @@ const NAV_LINKS = [
   { id: "craft", label: "Craft", number: "02" },
   { id: "work", label: "Work", number: "03" },
   { id: "journey", label: "Journey", number: "04" },
-  { id: "contact", label: "Contact", number: "05" },
+  { id: "resources", label: "Vault", number: "05" },
+  { id: "contact", label: "Contact", number: "06" },
 ];
 
 function Navbar() {
@@ -91,6 +92,12 @@ function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/playground"
+              className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent hover:text-paper transition-colors duration-300"
+            >
+              ✦ Playground
+            </Link>
             <Magnetic>
               <a
                 href={personalData.resume}
@@ -132,7 +139,23 @@ function Navbar() {
             transition={{ duration: 0.45, ease: [0.65, 0, 0.35, 1] }}
             className="fixed inset-0 z-40 bg-ink flex flex-col justify-between px-6 sm:px-10 pt-28 pb-10"
           >
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05, duration: 0.5 }}
+              >
+                <Link
+                  href="/playground"
+                  onClick={() => setOpen(false)}
+                  className="group flex items-baseline gap-4 py-2"
+                >
+                  <span className="font-mono text-xs text-accent">✦</span>
+                  <span className="font-display font-bold uppercase text-4xl sm:text-5xl tracking-tight text-accent group-hover:text-paper transition-colors duration-300">
+                    Playground
+                  </span>
+                </Link>
+              </motion.div>
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.id}
@@ -146,7 +169,7 @@ function Navbar() {
                     className="group flex items-baseline gap-4 py-2"
                   >
                     <span className="font-mono text-xs text-accent">{link.number}</span>
-                    <span className="font-display font-bold uppercase text-5xl sm:text-6xl tracking-tight text-paper group-hover:text-accent transition-colors duration-300">
+                    <span className="font-display font-bold uppercase text-4xl sm:text-5xl tracking-tight text-paper group-hover:text-accent transition-colors duration-300">
                       {link.label}
                     </span>
                   </Link>

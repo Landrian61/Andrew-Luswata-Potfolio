@@ -8,7 +8,7 @@ import ContactForm from "./contact-form";
 function ContactSection() {
   return (
     <section id="contact" className="px-6 sm:px-10 lg:px-16 py-24 sm:py-32 scroll-mt-20">
-      <SectionHeading number="05" title="Contact" hint="Say hello" />
+      <SectionHeading number="06" title="Contact" hint="Say hello" />
 
       <Reveal delay={0.1}>
         <h3 className="mt-14 sm:mt-20 font-display font-bold tracking-tight leading-[1.05] text-[clamp(2rem,5.5vw,4.5rem)] max-w-5xl">
