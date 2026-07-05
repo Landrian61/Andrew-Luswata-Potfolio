@@ -10,6 +10,8 @@ A dark, editorial "digital atelier" — big Syne display type, film grain, a cha
 - **Editorial project list** — cursor-following image previews on desktop, stacked cards on mobile
 - **Motion system** — framer-motion scroll reveals, magnetic buttons, full-screen animated menu, reading-progress bar and section spy
 - **Capability grid** — engineering, AI & prompt engineering, project/team leadership, design & creative direction
+- **The Playground (`/playground`)** — an interactive lab built by AI: particle typography you can retype, a generative flow field with attract/repel/burst modes, a GLSL liquid orb, and spring-physics kinetic type
+- **The Vault** — a curated resources section for fellow devs: cheat sheets, legendary repos and everyday tools
 - **Resilient by default** — the dev.to writing section hides itself when there are no posts; the contact form tries EmailJS → Telegram API → mailto fallback
 
 ## Stack
