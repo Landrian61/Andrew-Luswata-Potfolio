@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Magnetic from "../site/magnetic";
+import SpinBadge from "../site/spin-badge";
 
 // Three.js only ever renders on the client
 const HeroCanvas = dynamic(() => import("../three/hero-canvas"), {
@@ -144,6 +145,16 @@ function HeroSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* sticker badge — the human behind the particles */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ delay: 1.1, duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+        className="hidden md:block absolute right-10 lg:right-16 bottom-24"
+      >
+        <SpinBadge />
+      </motion.div>
 
       {/* role ticker along the hero's bottom edge */}
       <motion.div
