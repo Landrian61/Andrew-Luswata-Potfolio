@@ -5,7 +5,6 @@ import CraftSection from "./components/sections/craft";
 import HeroSection from "./components/sections/hero";
 import JourneySection from "./components/sections/journey";
 import PlaygroundCta from "./components/sections/playground-cta";
-import ResourcesSection from "./components/sections/resources";
 import WorkSection from "./components/sections/work";
 import WritingSection from "./components/sections/writing";
 
@@ -35,7 +34,6 @@ export default async function Home() {
       <WorkSection />
       <PlaygroundCta />
       <JourneySection />
-      <ResourcesSection />
       <WritingSection blogs={blogs} />
       <ContactSection />
     </>

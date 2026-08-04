@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
-import { FaGithub } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Magnetic from "../site/magnetic";
 import SpinBadge from "../site/spin-badge";
 
@@ -26,13 +25,11 @@ const fadeUp = {
 };
 
 const TICKER = [
-  "Software Developer",
-  "Creative Technologist",
+  "Software Engineer",
+  "AI Engineer",
+  "Project Manager",
+  "Frontend Lead",
   "AI-Native Builder",
-  "Prompt Engineer",
-  "Problem Solver",
-  "UI/UX Enthusiast",
-  "Team Player",
 ];
 
 function HeroSection() {
@@ -131,15 +128,15 @@ function HeroSection() {
                 <FaGithub size={20} />
               </a>
             )}
-            {personalData.twitter && (
+            {personalData.linkedIn && (
               <a
-                href={personalData.twitter}
+                href={personalData.linkedIn}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Twitter / X"
+                aria-label="LinkedIn"
                 className="hover:text-accent transition-colors duration-300"
               >
-                <FaXTwitter size={20} />
+                <FaLinkedinIn size={20} />
               </a>
             )}
           </div>

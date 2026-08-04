@@ -25,24 +25,24 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "Andrew Luswata — Software Developer & Creative Technologist",
+  title: "Andrew Luswata · Software Engineer · AI Engineer · Project Manager",
   description:
-    "Portfolio of Andrew Luswata — a software developer and creative technologist from Kampala, Uganda, building AI-powered products where engineering meets art. Full-stack development, prompt engineering, project leadership and UI/UX design.",
+    "Portfolio of Andrew Luswata, a software engineer, AI engineer and project manager from Kampala, Uganda. Frontend developer to Frontend Lead to Project Manager at AIBOS in under two years, shipping production systems and AI features for enterprise clients and leading teams across time zones.",
   keywords: [
     "Andrew Luswata",
-    "software developer",
-    "creative technologist",
+    "software engineer",
+    "AI engineer",
+    "project manager",
+    "frontend lead",
     "full-stack",
-    "AI",
-    "prompt engineering",
-    "UI/UX",
+    "LLM integration",
     "Kampala",
     "Uganda",
   ],
   openGraph: {
-    title: "Andrew Luswata — Software Developer & Creative Technologist",
+    title: "Andrew Luswata · Software Engineer · AI Engineer · Project Manager",
     description:
-      "Building AI-powered products where engineering meets art.",
+      "Frontend developer to Frontend Lead to Project Manager at AIBOS in under two years. Shipped production systems and AI features, and led teams across time zones.",
     type: "website",
   },
 };

@@ -1,141 +1,169 @@
-"use client";
-
 import { personalData } from "@/utils/data/personal-data";
-import { projectsData } from "@/utils/data/projects-data";
-import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
-import Image from "next/image";
-import { useRef, useState } from "react";
+import { alsoBuilt, selectedWork } from "@/utils/data/projects-data";
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import Reveal from "../site/reveal";
 import SectionHeading from "../site/section-heading";
 
-function ProjectRow({ project, index, onHover, onLeave }) {
-  const href = project.demo || project.code || null;
-  const Tag = href ? "a" : "div";
-  const linkProps = href
-    ? { href, target: "_blank", rel: "noopener noreferrer" }
+// Abstract stand-in for a screenshot: hairline texture, an accent rule and an
+// outlined monogram. The NDA entry carries its label here, quietly.
+function ProjectMark({ monogram, label, nda }) {
+  return (
+    <div className="relative mt-8 rounded-xl border border-line bg-surface/50 overflow-hidden aspect-[16/7]">
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(135deg, rgba(244,243,238,0.04) 0, rgba(244,243,238,0.04) 1px, transparent 1px, transparent 16px)",
+        }}
+      />
+      <div aria-hidden className="absolute left-6 top-6 h-px w-12 bg-accent/70" />
+      <span
+        aria-hidden
+        className="absolute -bottom-2 right-4 font-display font-extrabold uppercase text-outline leading-none select-none text-[clamp(4rem,9vw,7rem)] opacity-60"
+      >
+        {monogram}
+      </span>
+      <p className="absolute left-6 bottom-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+        {nda ? "Under NDA · details on request" : label}
+      </p>
+    </div>
+  );
+}
+
+function CaseStudy({ project, index }) {
+  return (
+    <Reveal delay={0.05}>
+      <article className="border-t border-line py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="lg:col-span-5">
+          <div className="flex items-baseline gap-4">
+            <span className="font-mono text-sm text-accent">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="font-display font-bold text-2xl sm:text-4xl tracking-tight">
+              {project.name}
+            </h3>
+          </div>
+          <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-accent/90">
+            {project.role}
+            {project.period ? ` · ${project.period}` : ""}
+          </p>
+          <p className="mt-2 font-mono text-xs text-muted">{project.org}</p>
+
+          <ProjectMark
+            monogram={project.monogram}
+            label={project.org}
+            nda={project.nda}
+          />
+        </div>
+
+        <div className="lg:col-span-7">
+          <div className="space-y-5">
+            {project.body.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)} className="text-sm sm:text-base text-muted leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <ul className="mt-7 flex flex-wrap gap-2 list-none">
+            {project.tools.map((tool) => (
+              <li
+                key={tool}
+                className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted border border-line rounded-full px-3 py-1"
+              >
+                {tool}
+              </li>
+            ))}
+          </ul>
+
+          {project.code ? (
+            <a
+              href={project.code}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-paper/85 hover:text-accent transition-colors duration-300 link-lined"
+            >
+              <FiGithub size={15} /> View the code <FiArrowUpRight size={15} />
+            </a>
+          ) : null}
+        </div>
+      </article>
+    </Reveal>
+  );
+}
+
+function CompactCard({ project, index }) {
+  const Tag = project.code ? "a" : "div";
+  const linkProps = project.code
+    ? { href: project.code, target: "_blank", rel: "noopener noreferrer" }
     : {};
 
   return (
-    <motion.li
-      initial={{ opacity: 0, y: 36 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.06, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className="border-t border-line last:border-b"
-    >
+    <Reveal delay={0.08 * index} className="bg-ink h-full">
       <Tag
         {...linkProps}
-        onMouseEnter={() => onHover(index)}
-        onMouseLeave={onLeave}
-        className={`group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-center py-8 sm:py-10 px-1 transition-colors duration-500 ${
-          href ? "cursor-pointer" : ""
+        className={`group flex flex-col h-full p-7 sm:p-8 bg-ink hover:bg-surface transition-colors duration-500 ${
+          project.code ? "cursor-pointer" : ""
         }`}
       >
-        <span className="md:col-span-1 font-mono text-sm text-muted group-hover:text-accent transition-colors duration-300">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <div className="md:col-span-6">
-          <h3 className="font-display font-bold text-2xl sm:text-4xl tracking-tight text-paper/85 group-hover:text-paper group-hover:translate-x-2 transition-all duration-500">
+        <div className="flex items-start justify-between">
+          <h4 className="font-display font-bold text-xl sm:text-2xl tracking-tight group-hover:text-accent transition-colors duration-300">
             {project.name}
-          </h3>
-          <p className="mt-3 text-sm text-muted leading-relaxed max-w-lg md:pr-6">
-            {project.description}
-          </p>
-          {/* mobile gets a static image since there's no cursor to follow */}
-          <div className="mt-5 md:hidden rounded-lg overflow-hidden border border-line">
-            <Image
-              src={project.image}
-              alt={project.name}
-              className="w-full h-44 object-cover"
-              placeholder="blur"
+          </h4>
+          {project.code ? (
+            <FiArrowUpRight
+              className="mt-1 shrink-0 text-muted/50 group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300"
+              size={18}
             />
-          </div>
+          ) : null}
         </div>
-
-        <div className="md:col-span-4 flex flex-wrap gap-2 content-start">
-          <span className="w-full font-mono text-[11px] uppercase tracking-[0.18em] text-accent/90 mb-1">
-            {project.role}
-          </span>
+        <p className="mt-3 text-sm text-muted leading-relaxed">
+          {project.description}
+        </p>
+        <ul className="mt-5 flex flex-wrap gap-2 list-none">
           {project.tools.map((tool) => (
-            <span
+            <li
               key={tool}
               className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted border border-line rounded-full px-3 py-1"
             >
               {tool}
-            </span>
+            </li>
           ))}
-        </div>
-
-        <span className="hidden md:flex md:col-span-1 justify-end text-muted group-hover:text-accent transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
-          {href ? <FiArrowUpRight size={26} /> : null}
-        </span>
+        </ul>
       </Tag>
-    </motion.li>
+    </Reveal>
   );
 }
 
 function WorkSection() {
-  const [hovered, setHovered] = useState(null);
-  const sectionRef = useRef(null);
-
-  // the floating preview trails the cursor on springs
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const previewX = useSpring(mouseX, { stiffness: 140, damping: 20, mass: 0.5 });
-  const previewY = useSpring(mouseY, { stiffness: 140, damping: 20, mass: 0.5 });
-
-  const handleMouseMove = (e) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    mouseX.set(e.clientX - rect.left + 28);
-    mouseY.set(e.clientY - rect.top - 110);
-  };
-
   return (
-    <section
-      id="work"
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      className="relative px-6 sm:px-10 lg:px-16 py-24 sm:py-32 scroll-mt-20"
-    >
-      <SectionHeading number="03" title="Work" hint="Selected projects" />
+    <section id="work" className="px-6 sm:px-10 lg:px-16 py-24 sm:py-32 scroll-mt-20">
+      <SectionHeading number="03" title="Work" hint="Case studies & builds" />
 
-      <ul className="mt-14 sm:mt-20 list-none">
-        {projectsData.map((project, i) => (
-          <ProjectRow
-            key={project.id}
-            project={project}
-            index={i}
-            onHover={setHovered}
-            onLeave={() => setHovered(null)}
-          />
+      <Reveal delay={0.1}>
+        <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          Selected work
+        </p>
+      </Reveal>
+
+      <div className="mt-8 border-b border-line">
+        {selectedWork.map((project, i) => (
+          <CaseStudy key={project.id} project={project} index={i} />
         ))}
-      </ul>
+      </div>
 
-      {/* cursor-following preview (desktop only) */}
-      <AnimatePresence>
-        {hovered !== null && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, rotate: -3 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.85, rotate: 3 }}
-            transition={{ duration: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
-            style={{ x: previewX, y: previewY }}
-            className="pointer-events-none absolute top-0 left-0 z-20 hidden md:block w-[22rem] rounded-xl overflow-hidden border border-line shadow-2xl shadow-black/60"
-          >
-            <Image
-              src={projectsData[hovered].image}
-              alt=""
-              className="w-full h-56 object-cover"
-              placeholder="blur"
-            />
-            <div className="bg-surface px-4 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-              {projectsData[hovered].name}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Reveal delay={0.1}>
+        <p className="mt-16 font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
+          Also built
+        </p>
+      </Reveal>
+
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-px bg-line border border-line rounded-2xl overflow-hidden">
+        {alsoBuilt.map((project, i) => (
+          <CompactCard key={project.id} project={project} index={i} />
+        ))}
+      </div>
 
       <div className="mt-14 flex justify-center">
         <a
