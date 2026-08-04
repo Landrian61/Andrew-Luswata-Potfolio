@@ -35,7 +35,7 @@ export const experiences = [
     duration: "May 2024 – July 2024",
     roles: [
       {
-        title: "Software Engineering Intern",
+        title: "Software Development Intern",
         duration: "May 2024 – July 2024",
         summary: "",
       },
