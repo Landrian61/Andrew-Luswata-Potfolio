@@ -1,6 +1,5 @@
 import { personalData } from "@/utils/data/personal-data";
-import { FiGithub, FiMapPin, FiPhone } from "react-icons/fi";
-import { FaXTwitter } from "react-icons/fa6";
+import { FiGithub, FiLinkedin, FiMapPin, FiPhone } from "react-icons/fi";
 import Reveal from "../site/reveal";
 import SectionHeading from "../site/section-heading";
 import ContactForm from "./contact-form";
@@ -8,7 +7,7 @@ import ContactForm from "./contact-form";
 function ContactSection() {
   return (
     <section id="contact" className="px-6 sm:px-10 lg:px-16 py-24 sm:py-32 scroll-mt-20">
-      <SectionHeading number="06" title="Contact" hint="Say hello" />
+      <SectionHeading number="05" title="Contact" hint="Say hello" />
 
       <Reveal delay={0.1}>
         <h3 className="mt-14 sm:mt-20 font-display font-bold tracking-tight leading-[1.05] text-[clamp(2rem,5.5vw,4.5rem)] max-w-5xl">
@@ -49,15 +48,15 @@ function ContactSection() {
                   <FiGithub size={18} />
                 </a>
               )}
-              {personalData.twitter && (
+              {personalData.linkedIn && (
                 <a
-                  href={personalData.twitter}
+                  href={personalData.linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Twitter / X"
+                  aria-label="LinkedIn"
                   className="w-12 h-12 rounded-full border border-paper/20 flex items-center justify-center text-muted hover:text-ink hover:bg-accent hover:border-accent transition-colors duration-300"
                 >
-                  <FaXTwitter size={18} />
+                  <FiLinkedin size={18} />
                 </a>
               )}
             </div>

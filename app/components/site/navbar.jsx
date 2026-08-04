@@ -11,8 +11,7 @@ const NAV_LINKS = [
   { id: "craft", label: "Craft", number: "02" },
   { id: "work", label: "Work", number: "03" },
   { id: "journey", label: "Journey", number: "04" },
-  { id: "resources", label: "Vault", number: "05" },
-  { id: "contact", label: "Contact", number: "06" },
+  { id: "contact", label: "Contact", number: "05" },
 ];
 
 function Navbar() {
@@ -93,6 +92,12 @@ function Navbar() {
               </Link>
             ))}
             <Link
+              href="/vault"
+              className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted hover:text-paper transition-colors duration-300"
+            >
+              Vault
+            </Link>
+            <Link
               href="/playground"
               className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent hover:text-paper transition-colors duration-300"
             >
@@ -155,6 +160,16 @@ function Navbar() {
                     Playground
                   </span>
                 </Link>
+                <Link
+                  href="/vault"
+                  onClick={() => setOpen(false)}
+                  className="group flex items-baseline gap-4 py-2"
+                >
+                  <span className="font-mono text-xs text-accent">✧</span>
+                  <span className="font-display font-bold uppercase text-4xl sm:text-5xl tracking-tight text-paper group-hover:text-accent transition-colors duration-300">
+                    Vault
+                  </span>
+                </Link>
               </motion.div>
               {NAV_LINKS.map((link, i) => (
                 <motion.div
@@ -195,9 +210,9 @@ function Navbar() {
                     GitHub
                   </a>
                 )}
-                {personalData.twitter && (
-                  <a href={personalData.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
-                    Twitter
+                {personalData.linkedIn && (
+                  <a href={personalData.linkedIn} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                    LinkedIn
                   </a>
                 )}
                 <a href={personalData.resume} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">

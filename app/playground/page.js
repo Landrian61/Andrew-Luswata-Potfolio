@@ -7,9 +7,9 @@ import ParticleType from "../components/playground/particle-type";
 import Reveal from "../components/site/reveal";
 
 export const metadata = {
-  title: "The Playground — Andrew Luswata × Fable 5",
+  title: "The Playground · Andrew Luswata",
   description:
-    "An interactive lab designed and coded end-to-end by Fable 5, Anthropic's AI, in conversation with Andrew Luswata. Particle typography, generative flow fields, living shaders and kinetic type.",
+    "An interactive lab directed and art-directed by Andrew Luswata, built with AI as a build partner. Particle typography, generative flow fields, living shaders and kinetic type.",
 };
 
 function PlaygroundPage() {
@@ -33,11 +33,12 @@ function PlaygroundPage() {
         </Reveal>
         <Reveal delay={0.18}>
           <p className="mt-8 max-w-2xl text-muted leading-relaxed text-base sm:text-lg">
-            Every pixel, shader and spring on this page was designed and coded by{" "}
-            <span className="text-paper">Fable 5</span> — Anthropic&apos;s AI — in
-            conversation with Andrew. Four live experiments in what web UI/UX
-            becomes when engineering, art and machine intelligence share one
-            canvas. Touch everything.
+            I directed and art-directed every experiment on this page, working
+            with <span className="text-paper">Fable 5</span>, Anthropic&apos;s
+            AI, as a build partner to push web UI further than I could
+            hand-code in the same time. Four live experiments in what happens
+            when engineering, art and machine intelligence share one canvas.
+            Touch everything.
           </p>
         </Reveal>
         <Reveal delay={0.24}>
@@ -97,8 +98,9 @@ function PlaygroundPage() {
             End of lab notes
           </p>
           <h2 className="mt-4 font-display font-bold uppercase tracking-tight text-[clamp(1.6rem,4vw,3rem)] max-w-3xl mx-auto leading-tight">
-            This is what happens when you hand AI{" "}
-            <span className="text-accent">a canvas</span> instead of a ticket.
+            This is what happens when you{" "}
+            <span className="text-accent">art-direct AI</span> instead of just
+            prompting it.
           </h2>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link

@@ -9,7 +9,7 @@ function Footer() {
 
   const socials = [
     { label: "GitHub", href: personalData.github },
-    { label: "Twitter", href: personalData.twitter },
+    { label: "LinkedIn", href: personalData.linkedIn },
     { label: "Email", href: `mailto:${personalData.email}` },
   ].filter((s) => s.href && !s.href.endsWith("mailto:"));
 
@@ -27,7 +27,7 @@ function Footer() {
         <div className="mt-10 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-              Software Developer &amp; Creative Technologist
+              {personalData.designation}
             </p>
             <p className="font-mono text-xs text-muted mt-2">
               {personalData.address} — open to work worldwide
@@ -40,6 +40,12 @@ function Footer() {
               className="link-lined text-accent/90 hover:text-accent transition-colors"
             >
               ✦ Playground
+            </Link>
+            <Link
+              href="/vault"
+              className="link-lined text-muted hover:text-accent transition-colors"
+            >
+              Vault
             </Link>
             {socials.map((s) => (
               <a

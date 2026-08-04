@@ -39,7 +39,11 @@ function CraftSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="group bg-ink p-8 sm:p-10 hover:bg-surface transition-colors duration-500"
+              className={`group bg-ink p-8 sm:p-10 hover:bg-surface transition-colors duration-500 ${
+                capabilities.length % 2 === 1 && i === capabilities.length - 1
+                  ? "md:col-span-2"
+                  : ""
+              }`}
             >
               <div className="flex items-start justify-between">
                 <span className="font-mono text-sm text-accent">/{cap.id}</span>

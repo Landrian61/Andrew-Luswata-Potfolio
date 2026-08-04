@@ -1,23 +1,23 @@
 export const personalData = {
   name: "ANDREW LUSWATA",
   profile: "/profile.png",
-  designation: "Software Developer & Creative Technologist",
+  designation: "Software Engineer · AI Engineer · Project Manager",
   tagline:
-    "I build AI-powered products where engineering meets art — code that works beautifully and looks it.",
+    "I take vague client intent and turn it into shipped software: clear architecture, sequenced roadmaps and production code that holds up.",
   description:
-    "I am a software developer with hands-on experience building AI-powered apps, real estate platforms and dashboards — full-stack work across Next.js, Node.js and Flask, backed by tools like Prisma, Tailwind CSS and Docker. Along the way I've grown far beyond the editor: leading projects, collaborating with teams, working AI tools and prompt engineering into my daily craft, and solving problems that don't come with a manual.",
+    "In under two years at AIBOS Uganda I went from frontend developer to Frontend Lead to Project Manager, authoring the frontend standards every team in the company now follows. My favorite place to work is the gap between vague client intent and shipped software: turning ambiguous requirements into sequenced, buildable features. I earned my remote stripes across a six-hour time gap and a language barrier, which taught me that written clarity is the medium remote work actually happens in. And AI is genuinely part of my toolchain: LLM integration, agent development, prompt engineering, and AI-assisted workflows I set up for a whole team, not just for myself.",
   artStatement:
-    "I'm a person who genuinely loves art and design. What pulls me in is the space where creativity and technology overlap — using code, motion and 3D to build interfaces that feel impossible. Every project is a canvas; shipping something that works is the baseline, shipping something that moves people is the goal.",
+    "The art thing is real, too. I love the space where creativity and technology overlap, using code, motion and 3D to build interfaces that feel impossible. Shipping something that works is the baseline; shipping something that moves people is the goal.",
   email: "luswataandrew190@gmail.com",
   phone: "+256-761-670-111",
   address: "Kampala, Uganda",
   github: "https://github.com/Landrian61",
   facebook: "",
-  linkedIn: "",
-  twitter: "https://twitter.com/Landria08275279",
+  linkedIn: "https://linkedin.com/in/luswata-andrew",
+  twitter: "",
   stackOverflow: "",
   leetcode: "",
   devUsername: "landrian61",
   resume:
-    "https://drive.google.com/file/d/1b7IZXpM5BVtUhqXEJgnrQA-cPTGrPW2W/view",
+    "https://drive.google.com/file/d/1IbyL5yofn9u39MX0DUNLjJH1Sqw6YWdE/view?usp=sharing",
 };

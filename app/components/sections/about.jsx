@@ -5,9 +5,15 @@ import SectionHeading from "../site/section-heading";
 
 const FACTS = [
   { label: "Based in", value: "Kampala, Uganda" },
-  { label: "Studying", value: "B.Sc. Software Engineering, Makerere University" },
-  { label: "Focus", value: "AI-powered products, full-stack web" },
-  { label: "Status", value: "Open to opportunities" },
+  {
+    label: "Education",
+    value: "B.Sc. Software Engineering, Makerere University. Graduated January 2026",
+  },
+  {
+    label: "Focus",
+    value: "Software engineering, AI engineering, technical project management",
+  },
+  { label: "Status", value: "Open to remote roles worldwide" },
 ];
 
 function AboutSection() {

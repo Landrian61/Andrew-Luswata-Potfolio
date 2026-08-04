@@ -34,10 +34,10 @@ function PlaygroundCta() {
             Enter the <span className="text-outline-accent">playground</span>
           </h2>
           <p className="mt-5 text-muted leading-relaxed">
-            An interactive lab designed and coded end-to-end by Fable 5 —
-            Anthropic&apos;s AI — in conversation with me. Particle typography,
-            generative flow fields, living shaders and kinetic type. Touch
-            everything; see how far AI has pushed web UI/UX.
+            An interactive lab I directed and art-directed, with AI as my build
+            partner, pushing web UI further than I could hand-code in the same
+            time. Particle typography, generative flow fields, living shaders
+            and kinetic type. Touch everything.
           </p>
         </motion.div>
 
