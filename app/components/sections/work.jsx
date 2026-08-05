@@ -1,5 +1,7 @@
 import { personalData } from "@/utils/data/personal-data";
 import { alsoBuilt, selectedWork } from "@/utils/data/projects-data";
+import fs from "node:fs";
+import path from "node:path";
 import Image from "next/image";
 import { FiArrowUpRight, FiGithub, FiGlobe } from "react-icons/fi";
 import Reveal from "../site/reveal";
@@ -32,7 +34,21 @@ function ProjectMark({ monogram, label, nda }) {
   );
 }
 
+// Resolved at build time in this server component: a declared preview only
+// renders once the screenshot actually exists in /public, so a missing file
+// falls back to the monogram panel instead of a broken image.
+function resolvePreview(preview) {
+  if (!preview) return null;
+  try {
+    fs.accessSync(path.join(process.cwd(), "public", preview));
+    return preview;
+  } catch {
+    return null;
+  }
+}
+
 function CaseStudy({ project, index }) {
+  const preview = resolvePreview(project.preview);
   return (
     <Reveal delay={0.05}>
       <article className="border-t border-line py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
@@ -51,7 +67,7 @@ function CaseStudy({ project, index }) {
           </p>
           <p className="mt-2 font-mono text-xs text-muted">{project.org}</p>
 
-          {project.preview ? (
+          {preview ? (
             <a
               href={project.demo || project.code}
               target="_blank"
@@ -60,7 +76,7 @@ function CaseStudy({ project, index }) {
               className="group block mt-8 rounded-xl border border-line overflow-hidden hover:border-accent/50 transition-colors duration-500"
             >
               <Image
-                src={project.preview}
+                src={preview}
                 alt={project.previewAlt || `${project.name} landing page`}
                 width={1440}
                 height={900}

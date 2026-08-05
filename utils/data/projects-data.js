@@ -27,10 +27,10 @@ export const selectedWork = [
     period: "",
     monogram: "DG",
     nda: false,
-    // Drop a landing-page screenshot at /public/image/docgen.jpg and set
-    // preview: "/image/docgen.jpg" to replace the monogram panel with it.
-    preview: "",
-    previewAlt: "DocGen landing page",
+    // The preview renders only once this file exists in /public — drop a
+    // landing-page screenshot at /public/image/docgen.jpg to activate it.
+    preview: "/image/docgen.jpg",
+    previewAlt: "DocGen landing page: Ship the spec. Skip the template.",
     body: [
       "Documentation tooling that interviews you section by section and assembles the document live from your answers, instead of handing you an empty template. The first supported type is a Software Requirements Specification structured on the IEEE 830 template, so a completed interview produces a correctly structured document by construction.",
       "The app owns the cover page, table of contents, section and requirement numbering, revision history and every export format. The model writes only the prose, so the document's structure never depends on the model behaving.",
