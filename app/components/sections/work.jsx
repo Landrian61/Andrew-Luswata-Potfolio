@@ -1,6 +1,7 @@
 import { personalData } from "@/utils/data/personal-data";
 import { alsoBuilt, selectedWork } from "@/utils/data/projects-data";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import Image from "next/image";
+import { FiArrowUpRight, FiGithub, FiGlobe } from "react-icons/fi";
 import Reveal from "../site/reveal";
 import SectionHeading from "../site/section-heading";
 
@@ -50,11 +51,29 @@ function CaseStudy({ project, index }) {
           </p>
           <p className="mt-2 font-mono text-xs text-muted">{project.org}</p>
 
-          <ProjectMark
-            monogram={project.monogram}
-            label={project.org}
-            nda={project.nda}
-          />
+          {project.preview ? (
+            <a
+              href={project.demo || project.code}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.name} — open the live app`}
+              className="group block mt-8 rounded-xl border border-line overflow-hidden hover:border-accent/50 transition-colors duration-500"
+            >
+              <Image
+                src={project.preview}
+                alt={project.previewAlt || `${project.name} landing page`}
+                width={1440}
+                height={900}
+                className="w-full h-auto grayscale-[35%] group-hover:grayscale-0 transition-all duration-700"
+              />
+            </a>
+          ) : (
+            <ProjectMark
+              monogram={project.monogram}
+              label={project.org}
+              nda={project.nda}
+            />
+          )}
         </div>
 
         <div className="lg:col-span-7">
@@ -77,16 +96,28 @@ function CaseStudy({ project, index }) {
             ))}
           </ul>
 
-          {project.code ? (
-            <a
-              href={project.code}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-paper/85 hover:text-accent transition-colors duration-300 link-lined"
-            >
-              <FiGithub size={15} /> View the code <FiArrowUpRight size={15} />
-            </a>
-          ) : null}
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            {project.demo ? (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-paper/85 hover:text-accent transition-colors duration-300 link-lined"
+              >
+                <FiGlobe size={15} /> Visit the live app <FiArrowUpRight size={15} />
+              </a>
+            ) : null}
+            {project.code ? (
+              <a
+                href={project.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-paper/85 hover:text-accent transition-colors duration-300 link-lined"
+              >
+                <FiGithub size={15} /> View the code <FiArrowUpRight size={15} />
+              </a>
+            ) : null}
+          </div>
         </div>
       </article>
     </Reveal>
